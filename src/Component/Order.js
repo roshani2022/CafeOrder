@@ -21,7 +21,7 @@ const Order = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    props.onOrder(productId,productPrice,productName,productCategory);
+    props.onOrder(productId, productPrice, productName, productCategory);
     setProductId("");
     setProductPrice("");
     setProductName("");
@@ -62,7 +62,9 @@ const Order = (props) => {
           </select>
         </div>
         <div>
-          <button type="submit" className="order-action">Add Product</button>
+          <button type="submit" className="order-action">
+            Add Product
+          </button>
         </div>
       </form>
     </div>
