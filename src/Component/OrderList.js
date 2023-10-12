@@ -12,50 +12,35 @@ const OrderList = (props) => {
   const skincareOrders = orders.filter(
     (order) => order.category === "SkinCare"
   );
+  const renderOrderItems = (orders) => {
+    return orders.map((order) => (
+      <li key={order.id}>
+        {order.OrderId} - {order.price} - {order.product} - {order.category}{" "}
+        <button type="button" onClick={() => onClick(order.OrderId, order.category)}>
+          Delete Product
+        </button>
+      </li>
+    ));
+  };
+  
 
   return (
     <div className="order-list">
       <div className="category">
         <h2>Food Items</h2>
-        <ul>
-          {foodOrders.map((order) => (
-            <li key={order.id}>
-              {order.OrderId} -{order.price} -{order.product} -{order.category}{" "}
-              -
-              <button type="button" onClick={() => onClick(order.OrderId,order.category)}>
-                Delete Product
-              </button>
-            </li>
-          ))}
-        </ul>
+        <ul>{renderOrderItems(foodOrders)}</ul>
       </div>
 
       <div className="category">
         <h2>Electronic Items</h2>
         <ul>
-          {electronicOrders.map((order) => (
-            <li key={order.id}>
-              {order.OrderId} -{order.price} -{order.product} -{order.category}{" "}
-              -
-              <button type="button" onClick={() => onClick(order.OrderId,order.category)}>
-                Delete Product
-              </button>
-            </li>
-          ))}
+         {renderOrderItems(electronicOrders)}
         </ul>
       </div>
       <div className="category">
         <h2>SkinCare Items</h2>
         <ul>
-          {skincareOrders.map((order) => (
-            <li key={order.id}>
-              {order.OrderId} -{order.price} -{order.product} -{order.category}{" "}
-              -
-              <button type="button" onClick={() => onClick(order.OrderId,order.category)}>
-                Delete Product
-              </button>
-            </li>
-          ))}
+          {renderOrderItems(skincareOrders)}
         </ul>
       </div>
     </div>
