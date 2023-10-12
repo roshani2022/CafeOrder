@@ -9,8 +9,9 @@ function App() {
   useEffect(() => {
     const loadedOrders = [];
     setOrderList(loadedOrders);
-      const orderInformation = localStorage.getItem("isOrder");
-      if (orderInformation === "key") {
+      const orderInformation = JSON.parse(localStorage.getItem("key"))
+      console.log(orderInformation)
+      if (orderInformation ==="newOrder") {
         setIsOrder(true);
       }
     }, []);
@@ -33,7 +34,7 @@ function App() {
     const deleteOrderHandler = (oId,oCategory) => {
      
       // Generate the key based on orderId and category
-      const updatedList = orderList.filter(order => order.id !== oId);
+      const updatedList = orderList.filter((order) => order.id !== oId && order.category!==oCategory);
       const key = `${oId}-${oCategory}`;
       console.log(key)
       // Remove the item from localStorage using the correct key

@@ -22,7 +22,7 @@ const OrderList = (props) => {
             <li key={order.id}>
               {order.OrderId} -{order.price} -{order.product} -{order.category}{" "}
               -
-              <button type="button" onClick={() => onClick(order.id,order.category)}>
+              <button type="button" onClick={() => onClick(order.OrderId,order.category)}>
                 Delete Product
               </button>
             </li>
@@ -37,7 +37,7 @@ const OrderList = (props) => {
             <li key={order.id}>
               {order.OrderId} -{order.price} -{order.product} -{order.category}{" "}
               -
-              <button type="button" onClick={() => onClick(order.id)}>
+              <button type="button" onClick={() => onClick(order.OrderId,order.category)}>
                 Delete Product
               </button>
             </li>
@@ -51,7 +51,7 @@ const OrderList = (props) => {
             <li key={order.id}>
               {order.OrderId} -{order.price} -{order.product} -{order.category}{" "}
               -
-              <button type="button" onClick={() => onClick(order.id)}>
+              <button type="button" onClick={() => onClick(order.OrderId,order.category)}>
                 Delete Product
               </button>
             </li>
