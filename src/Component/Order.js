@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./Order.css";
+import Card from "./UI/Card";
+import Button from "./UI/Button";
 const Order = (props) => {
   const [productId, setProductId] = useState("");
   const [productPrice, setProductPrice] = useState("");
@@ -29,13 +31,13 @@ const Order = (props) => {
   };
 
   return (
-    <div className="Order">
+    <Card className="Order">
       <form onSubmit={submitHandler}>
-        <div className="order-contol">
+        <div className="order-control">
           <label htmlFor="Product ID">Product Id</label>
           <input id="id" type="number" value={productId} onChange={idHandler} />
         </div>
-        <div className="order-contol">
+        <div className="order-control">
           <label htmlFor="Selling Price">Selling Price:</label>
           <input
             type="number"
@@ -44,7 +46,7 @@ const Order = (props) => {
             onChange={priceHandler}
           />
         </div>
-        <div className="order-contol">
+        <div className="order-control">
           <label htmlFor="Product Name">Product Name:</label>
           <input
             type="text"
@@ -53,7 +55,7 @@ const Order = (props) => {
             onChange={productNameHandler}
           />
         </div>
-        <div className="order-contol">
+        <div className="order-control">
           <label htmlFor="Table">Choose a Category </label>
           <select value={productCategory} onChange={categoryHandler}>
             <option value="Food">Food</option>
@@ -62,12 +64,10 @@ const Order = (props) => {
           </select>
         </div>
         <div>
-          <button type="submit" className="order-action">
-            Add Product
-          </button>
+           <Button type="submit">Add Product</Button>       
         </div>
       </form>
-    </div>
+    </Card>
   );
 };
 export default Order;

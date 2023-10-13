@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import OrderList from "./Component/OrderList";
 import Order from "./Component/Order";
-
+import './App.css'
 function App() {
   const [orderList, setOrderList] = useState([]);
   const [isOrder, setIsOrder] = useState(false);
@@ -23,7 +23,7 @@ function App() {
         category: oCategory,
         id: Math.random().toString(),
       };
-      const key = `${oId}-${oCategory}`
+      const key = `${oId}-${oProduct}`
       
       localStorage.setItem( key,JSON.stringify(newOrder));
       const updatedList = [...orderList, newOrder];
@@ -31,14 +31,14 @@ function App() {
       setIsOrder(true);
     };  
     
-    const deleteOrderHandler = (oId,oCategory) => {
+    const deleteOrderHandler = (oId,oProduct) => {
      
       // Generate the key based on orderId and category
-      const updatedList = orderList.filter((order) => order.id !== oId && order.category!==oCategory);
-      const key = `${oId}-${oCategory}`;
-      console.log(key)
+    //  const updatedList = orderList.filter((order) => order.id !== oId && order.category!==oCategory);
+    const key = `${oId}-${oProduct}`
       // Remove the item from localStorage using the correct key
       localStorage.removeItem(key)
+      const updatedList = orderList.filter((order) => order.id !== oId && order.product!==oProduct)
      
     
       // Update the order list in the state
@@ -51,13 +51,15 @@ function App() {
     return (
       <div className="App">
       <Order onOrder={addOrderHandler}></Order>
-      {<h1>Product</h1>}
+      
       <OrderList
         orders={orderList}
         onOrder={isOrder}
         onClick={deleteOrderHandler}
       ></OrderList>
+      
     </div>
+    
   );
 }
 export default App;

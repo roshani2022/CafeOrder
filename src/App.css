@@ -1,9 +1,10 @@
 .App {
   text-align: left;
+  gap: 4rem;
 }
+
 body{
-  background-color: hsl(180, 60%, 83%);
+  background: rgba(212, 178, 201, 0.884);
+
 }
-
-
 
