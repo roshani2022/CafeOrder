@@ -4,14 +4,14 @@ import Card from "./UI/Card";
 import Button from "./UI/Button";
 
 const OrderList = (props) => {
-  const { orders, onClick } = props;
+  //const { orders, onClick } = props;
 
   // Filter orders by category
-  const foodOrders = orders.filter((order) => order.category === "Food");
-  const electronicOrders = orders.filter(
+  const foodOrders = props.orders.filter((order) => order.category === "Food");
+  const electronicOrders = props.orders.filter(
     (order) => order.category === "ElectronicItem"
   );
-  const skincareOrders = orders.filter(
+  const skincareOrders = props.orders.filter(
     (order) => order.category === "SkinCare"
   );
   const renderOrderItems = (orders) => {
@@ -20,7 +20,7 @@ const OrderList = (props) => {
         {order.OrderId} - {order.price} - {order.product} - {order.category}{" "}
         <Button
           type="button"
-          onClick={() => onClick(order.OrderId,order.product)}
+          onClick={() => props.onClick(order.OrderId,order.product)}
         >
            Delete Product
         </Button>
