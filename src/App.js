@@ -6,15 +6,25 @@ function App() {
   const [orderList, setOrderList] = useState([]);
   const [isOrder, setIsOrder] = useState(false);
 
+  // useEffect((oId,oProduct) => {
+  //       const key = `${oId}-${oProduct}`
+  //      const orderInformation =JSON.parse(localStorage.getItem(key))
+
+  //      console.log(orderInformation)
+  //      if(orderInformation===orderList){
+  //       setIsOrder(true)
+  //      }
+  //     // setOrderList(JSON.parse(orderInformation))
+
+  //   }, [orderList]);
+
   useEffect(() => {
-    const loadedOrders = [];
-    setOrderList(loadedOrders);
-      const orderInformation = JSON.parse(localStorage.getItem("key"))
-      console.log(orderInformation)
-      if (orderInformation ==="newOrder") {
-        setIsOrder(true);
-      }
-    }, []);
+    // Load data from local storage when the component initializes
+    const dataFromStorage = Object.keys(localStorage).map(key => JSON.parse(localStorage.getItem(key)));
+    setOrderList(dataFromStorage);
+  }, []);
+
+    
     const addOrderHandler = (oId, oPrice, oProduct, oCategory) => {
       const newOrder = {
         OrderId: oId,
